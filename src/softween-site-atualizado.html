@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localização por RSSI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="number"],
+        input[type="submit"] {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-size: 1em;
+            width: calc(100% - 18px);
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #map {
+            height: 600px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #timeResult {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+    <h1>Softween - Localização</h1>
+
+    <form id="rssiForm">
+        <label for="rssi_ref">RSSI de Referência (1 metro):</label>
+        <input type="number" id="rssi_ref" step="any" required>
+
+        <label for="rssi_measured">RSSI Medido (destino):</label>
+        <input type="number" id="rssi_measured" step="any" required>
+
+        <label for="n_value">Digite o valor de n:</label>
+        <input type="number" id="n_value" step="any" required>
+
+        <label for="dest_latitude">Latitude do Destino:</label>
+        <input type="number" id="dest_latitude" step="any" required>
+
+        <label for="dest_longitude">Longitude do Destino:</label>
+        <input type="number" id="dest_longitude" step="any" required>
+
+        <input type="submit" value="Calcular e Mostrar no Mapa">
+    </form>
+
+    <div id="map"></div>
+    <div id="timeResult"></div>
+
+    <script>
+
+        function calculateDistance(rssi_ref, rssi_measured, n) {
+            return Math.pow(10, (rssi_ref - rssi_measured) / (10 * n));
+        }
+
+
+        function calculateTravelTime(distance) {
+            const speedKmh = 7;
+            const speedMps = speedKmh * 1000 / 3600;
+            return distance / speedMps;
+        }
+
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes} minutos e ${remainingSeconds} segundos`;
+        }
+
+
+        function calculateDirection(ref_latitude, ref_longitude, cur_latitude, cur_longitude) {
+            let direction = "";
+
+            if (cur_latitude > ref_latitude) {
+                direction += "Norte";
+            } else if (cur_latitude < ref_latitude) {
+                direction += "Sul";
+            }
+
+            if (cur_longitude > ref_longitude) {
+                direction += (direction ? " e " : "") + "Leste";
+            } else if (cur_longitude < ref_longitude) {
+                direction += (direction ? " e " : "") + "Oeste";
+            }
+
+            return direction || "Mesma posição";
+        }
+
+
+        const fixedLatitude = -23.6292567;
+        const fixedLongitude = -46.5516058;
+
+
+        const map = L.map('map').setView([fixedLatitude, fixedLongitude], 15);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        const marker = L.marker([fixedLatitude, fixedLongitude]).addTo(map)
+            .bindPopup('Ponto Fixo').openPopup();
+
+
+        document.getElementById('rssiForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+
+            const rssi_ref = parseFloat(document.getElementById('rssi_ref').value);
+            const rssi_measured = parseFloat(document.getElementById('rssi_measured').value);
+            const n_value = parseFloat(document.getElementById('n_value').value);
+            const dest_latitude = parseFloat(document.getElementById('dest_latitude').value);
+            const dest_longitude = parseFloat(document.getElementById('dest_longitude').value);
+
+
+            const distance = calculateDistance(rssi_ref, rssi_measured, n_value);
+
+
+            const direction = calculateDirection(fixedLatitude, fixedLongitude, dest_latitude, dest_longitude);
+
+
+            const newMarker = L.marker([dest_latitude, dest_longitude]).addTo(map)
+                .bindPopup(`Destino está a ${distance.toFixed(2)} metros em direção ${direction}`).openPopup();
+
+
+            map.setView([dest_latitude, dest_longitude], 15);
+
+
+            const travelTimeSeconds = calculateTravelTime(distance);
+            const formattedTime = formatTime(travelTimeSeconds);
+
+
+            document.getElementById('timeResult').innerHTML = `Tempo estimado para chegar: ${formattedTime} em uma velocidade de 7km/h`;
+        });
+    </script>
+
+</body>
+
+</html>
