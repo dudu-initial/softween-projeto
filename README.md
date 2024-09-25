@@ -2,7 +2,7 @@
 
 ## Código-Fonte
 
-O código-fonte está disponível na pasta [`/scr`](./scr).
+O código-fonte está disponível na pasta [`/scr`](src).
 
 ## Arquitetura do Sistema
 
