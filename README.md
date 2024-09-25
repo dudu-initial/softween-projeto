@@ -38,9 +38,9 @@ GitHub: Repositório de código e documentação.
 # Resultados:
 
 Exemplo de Dados:
-Latitude: -23.574504586242327
-Longitude: -46.62327655100279
-Distância calculada: 25 metros
-Direção: Norte e Oeste (Noroeste)
+Latitude: -23.574504586242327.
+Longitude: -46.62327655100279.
+Distância calculada: 25 metros.
+Direção: Norte e Oeste (Noroeste).
 
 ![image](https://github.com/user-attachments/assets/96538513-de6e-4c1b-9b53-287a2f54085f)
