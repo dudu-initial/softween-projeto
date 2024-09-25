@@ -1,5 +1,13 @@
 # softween-projeto
 
+## Código-Fonte
+
+O código-fonte está disponível na pasta [`/scr`](./scr).
+
+## Arquitetura do Sistema
+
+![Arquitetura](./assets/softween-site.png)
+
 # Introdução:
 
 # Problema:
