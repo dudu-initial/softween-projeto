@@ -6,7 +6,7 @@ O código-fonte está disponível na pasta [`/scr`](./scr).
 
 ## Arquitetura do Sistema
 
-![Arquitetura](./assets/softween-site.png)
+![Arquitetura](./assets/arquiteturadosistema.drawio.png)
 
 # Introdução:
 
