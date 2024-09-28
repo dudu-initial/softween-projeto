@@ -34,16 +34,22 @@ Mapa Web - Exibe a posição em tempo real no mapa, usando tecnologias como Leaf
 
 # Tecnologias Utilizadas:
 ESP32: Para captura e envio de dados de RSSI.
+<br/>
 WiFi: Redes locais para comunicação.
+<br/>
 Leaflet.js: Biblioteca de mapas para exibir a localização.
+<br/>
 GitHub: Repositório de código e documentação.
 
 # Resultados:
 
 Exemplo de Dados:
 Latitude: -23.574504586242327.
+<br/>
 Longitude: -46.62327655100279.
+<br/>
 Distância calculada: 25 metros.
+<br/>
 Direção: Norte e Oeste (Noroeste).
 
 ![image](https://github.com/user-attachments/assets/96538513-de6e-4c1b-9b53-287a2f54085f)
