@@ -45,12 +45,21 @@ GitHub: Repositório de código e documentação.
 # Resultados:
 
 Exemplo de Dados:
-Latitude: -23.574504586242327.
+**FIAP - PRÉDIO 1**
+Latitude: -23.574500474355066.
 <br/>
-Longitude: -46.62327655100279.
+Longitude: -46.62328305935707.
+<br/>
+<br/>
+**SALGADELICIA**
+Latitude: -23.57452198495069.
+<br/>
+Longitude: -46.62302623787215.
 <br/>
 Distância calculada: 25 metros.
 <br/>
 Direção: Norte e Oeste (Noroeste).
+
+
 
 ![image](https://github.com/user-attachments/assets/96538513-de6e-4c1b-9b53-287a2f54085f)
