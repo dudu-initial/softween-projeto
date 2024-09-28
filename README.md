@@ -18,12 +18,13 @@ Criar uma solução baseada em IoT que, utilizando o ESP32, permitindo localizar
 
 # Desenvolvimento:
 
-Arquitetura da Solução:
+**Arquitetura da Solução:**
 
 Abrir com draw.io para melhor visualização:
 https://drive.google.com/file/d/1niPyul0DXf_Rf4q41qjiJOG7rxCTIb87/view?usp=drive_link
 
-Componentes:
+**Componentes:**
+<br/>
 ESP32 - Responsável por capturar o RSSI e outros dados de localização.
 <br/>
 Website - Onde os dados são processados e armazenados.
@@ -31,7 +32,8 @@ Website - Onde os dados são processados e armazenados.
 Mapa Web - Exibe a posição em tempo real no mapa, usando tecnologias como Leaflet.js.
 <br/>
 
-Tecnologias Utilizadas:
+**Tecnologias Utilizadas:**
+<br/>
 ESP32: Para captura e envio de dados de RSSI.
 <br/>
 WiFi: Redes locais para comunicação.
