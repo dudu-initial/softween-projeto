@@ -14,7 +14,7 @@ O código-fonte está disponível na pasta [`/scr`](src).
 A necessidade de rastrear a localização precisa de objetos dentro de um ambiente industrial. No caso deste projeto, utilizamos uma solução para localizar um carrinho plataforma da John Deere, oferecendo dados em tempo real que podem otimizar a logística interna.
 
 # Objetivos:
-Criar uma solução baseada em IoT que, utilizando o ESP32, permite localizar o carrinho em tempo real.
+Criar uma solução baseada em IoT que, utilizando o ESP32, permitindo localizar o carrinho em tempo real.
 
 # Desenvolvimento:
 
@@ -26,8 +26,11 @@ https://drive.google.com/file/d/1niPyul0DXf_Rf4q41qjiJOG7rxCTIb87/view?usp=drive
 # Componentes:
 
 ESP32 - Responsável por capturar o RSSI e outros dados de localização.
+<br/>
 Website - Onde os dados são processados e armazenados.
+<br/>
 Mapa Web - Exibe a posição em tempo real no mapa, usando tecnologias como Leaflet.js.
+<br/>
 
 # Tecnologias Utilizadas:
 ESP32: Para captura e envio de dados de RSSI.
