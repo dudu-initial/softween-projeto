@@ -46,12 +46,13 @@ GitHub: Repositório de código e documentação.
 
 Exemplo de Dados:
 **FIAP - PRÉDIO 1**
+<br/>
 Latitude: -23.574500474355066.
 <br/>
 Longitude: -46.62328305935707.
 <br/>
-<br/>
 **SALGADELICIA**
+<br/>
 Latitude: -23.57452198495069.
 <br/>
 Longitude: -46.62302623787215.
