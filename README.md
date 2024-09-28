@@ -44,7 +44,8 @@ GitHub: Repositório de código e documentação.
 
 # Resultados:
 
-Exemplo de Dados:
+**Exemplo de Dados:**
+<br/>
 **FIAP - PRÉDIO 1**
 <br/>
 Latitude: -23.574500474355066.
@@ -57,9 +58,10 @@ Latitude: -23.57452198495069.
 <br/>
 Longitude: -46.62302623787215.
 <br/>
-Distância calculada: 25 metros.
 <br/>
-Direção: Norte e Oeste (Noroeste).
+**Distância calculada: 25 metros.**
+<br/>
+**Direção: Norte e Oeste (Noroeste).**
 
 
 
